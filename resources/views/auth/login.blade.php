@@ -10,6 +10,11 @@
                             {{ Session::get('success') }}
                         </div>
                     @endif
+                    @if (Session::get('fail'))
+                        <div class="alert alert-danger" id="successMessage">
+                            {{ Session::get('fail') }}
+                        </div>
+                    @endif
                     <header class="head-form">
                         <h2>Log In</h2>
                         <p>login here using your username and password</p>

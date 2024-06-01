@@ -29,7 +29,6 @@ class AuthController extends Controller
         ], [
             'cpassword.same' => 'The confirm password same as password',
             'cpassword' => 'The confirm password field is required',
-            
         ]);
         User::create($request->input());
         return redirect('login')->with('success', 'User create successfully now you can login yourself!');
@@ -39,7 +38,6 @@ class AuthController extends Controller
             'email'=>'required|email|exists:users,email',
             'password'=>'required',
         ]);
-
         $getUser = User::where('email', $request->email)->first();
         $getUserId = $getUser->id;
         $getUserPassword = $getUser->password;
@@ -52,7 +50,7 @@ class AuthController extends Controller
                     return redirect()->back()->with('fail', 'data not found');
                 }
             } else {
-                return redirect()->back()->with('passwordError', 'password not matched');
+                return redirect()->back()->with('fail', 'password not matched');
             }
     }
     function logout()

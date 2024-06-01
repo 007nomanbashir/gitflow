@@ -4,7 +4,6 @@
         <div class="card">
             <form action="{{ route('create_post', encrypt($getPostWithId->id)) }}" method="POST">
                 @csrf
-
                 <div class="card-body ">
                     @if (Session::get('success'))
                         <div class="alert alert-success container" id="successMessage">

@@ -34,7 +34,6 @@ class SendDailyEmail extends Command
         foreach ($users as $user) {
             \Mail::to($user->email)->send(new sendEmail($topPost));
         }
-
         $this->info('Daily email sent to all users successfully.');
     }
 }

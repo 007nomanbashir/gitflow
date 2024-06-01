@@ -4,7 +4,6 @@
         <div class="card">
             <form action="{{ route('create_post') }}" method="POST">
                 @csrf
-
                 <div class="card-body ">
                     @if (Session::get('success'))
                         <div class="alert alert-success container" id="successMessage">
@@ -21,16 +20,8 @@
                     <button class="btn btn-light my-2">Post</button>
                 </div>
             </form>
-
         </div>
-
-
-
-
-
     </div>
-
-
     <style>
         body {
             font-family: sans-serif;
@@ -87,8 +78,6 @@
             color: rgb(73, 73, 73);
         }
 
-
-
         .card3 {
             background-color: #9db4c4;
         }
@@ -118,51 +107,37 @@
             line-height: 200px;
         }
 
-
-
         .fa-instagrams {
             color: white;
         }
     </style>
-
-
     @forelse ($getAllPost as $item)
         <div class="container-card">
-
             <div class="card-content">
-
-                
                 <div class="upper card3">
-
-                    @if(Auth::user()->id == $item->user->id)
-
-                    <small class="fa fa-instagramss">
-                        <a href="{{route('edit', encrypt($item->id))}}" class="text-dark"><i class="fas fa-edit"></i></a>
-                        <a href="{{route('destroy', encrypt($item->id))}}" class="text-dark" onclick="return confirm('are you sure you want to delete this post')"><i class="fa-solid fa-trash"></i></a>
-                        <a href="{{route('read', encrypt($item->id))}}" class="text-dark"><i class="fa-solid fa-eye"></i></a>                    
-                    
-                    </small>
+                    @if (Auth::user()->id == $item->user->id)
+                        <small class="fa fa-instagramss">
+                            <a href="{{ route('edit', encrypt($item->id)) }}" class="text-dark"><i
+                                    class="fas fa-edit"></i></a>
+                            <a href="{{ route('destroy', encrypt($item->id)) }}" class="text-dark"
+                                onclick="return confirm('are you sure you want to delete this post')"><i
+                                    class="fa-solid fa-trash"></i></a>
+                            <a href="{{ route('read', encrypt($item->id)) }}" class="text-dark"><i
+                                    class="fa-solid fa-eye"></i></a>
+                        </small>
                     @else
-                    <small class="fa fa-instagram"></small>
+                        <small class="fa fa-instagram"></small>
                     @endif
-
-
                 </div>
-
                 <div class="upper card3">
                     <p class="fa fa-instagrams">{{ $item->user->name }}<span>'s post</span></p>
-
                 </div>
-
                 <div class="lower">
                     <p>{{ $item->post }} </p>
                 </div>
-
                 <p>{{ \Carbon\Carbon::parse($item->created_at)->diffForHumans() }}</p>
-
             </div>
         </div>
-
     @empty
         <h2 class="text-center">No post available</h2>
     @endforelse

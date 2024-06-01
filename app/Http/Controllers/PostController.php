@@ -21,10 +21,8 @@ class PostController extends Controller
                 'post' => $request->post,
             ]);
             return redirect()->back()->with('success', 'post create successfull');
-
         }
         $decryptID = decrypt($id);
-
         $request->validate([
             'post' => 'required',
         ]);
@@ -33,9 +31,7 @@ class PostController extends Controller
             'post' => $request->post,
         ]);
         return redirect()->back()->with('success', 'post updated successfull');
-
     }
-
     public function destroy(Request $request, $id)
     {
         $decryptID = decrypt($id);
@@ -52,8 +48,6 @@ class PostController extends Controller
             'click' => $addOneClickInPrivous,
         ]);
         return view('dashboard.edit', ['getPostWithId' => $getPostWithId]);
-
-
     }
     public function read(Request $request, $id){
         $decryptID = decrypt($id);
