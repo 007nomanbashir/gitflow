@@ -6,7 +6,7 @@
             <div class="overlay">
                 <div class="con">
                     @if (Session::get('success'))
-                        <div class="alert alert-success">
+                        <div class="alert alert-success" id="successMessage">
                             {{ Session::get('success') }}
                         </div>
                     @endif

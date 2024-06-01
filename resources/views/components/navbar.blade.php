@@ -1,11 +1,10 @@
 <div>
     <body>
         <header>
-            <a href="#" class="logo">Laravel-assesment</a>
+            <a href="/" class="logo">Laravel-assesment</a>
             <div class="mean-toggle"></div>
             <nav>
                 <ul>
-                    <li><a href="#">Profile</a></li>
                     <li><a href="{{ route('logout') }}"
                             onclick="event.preventDefault();document.
                             getElementById('logout-form').submit();"

@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\PostController;
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\DashboardController;
@@ -15,13 +17,7 @@ use App\Http\Controllers\DashboardController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 
-// Auth::routes();
-
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::middleware(['guest:web'])->group(function () {
 
@@ -36,6 +32,14 @@ Route::middleware(['auth:web'])->group(function () {
     
     Route::get('/', [DashboardController::class, 'dashboard'])->name('dashboard');
     Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+    Route::post('createPost/{id?}', [PostController::class, 'createPost'])->name('create_post');
+    Route::get('destroy/{id}', [PostController::class, 'destroy'])->name('destroy');
+    Route::get('edit/{id}', [PostController::class, 'edit'])->name('edit');
+    Route::get('read/{id}', [PostController::class, 'read'])->name('read');
+
+    Route::get('test', function(){
+      return  $maxClickPost = Post::where('click', Post::max(DB::raw('CAST(click AS UNSIGNED)')))->first();
+    });
    
 
 });

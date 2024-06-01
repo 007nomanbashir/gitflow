@@ -1,4 +1,4 @@
-body {
+body,.card {
     background-image: linear-gradient(-225deg, #e3fdf5 0%, #ffe6fa 100%) !important;
     background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%) !important;
     background-attachment: fixed;
@@ -131,3 +131,30 @@ nav ul li a:hover {
         text-align: center;
     }
 }
+
+
+.styled-input {
+    /* width: 1050px; */
+    /* Adjust the width as needed */
+    padding: 10px;
+    /* Add padding for better appearance */
+    border: 1px solid #ccc;
+    /* Add a border */
+    border-radius: 5px;
+    /* Add rounded corners */
+    font-size: 16px;
+    /* Set font size */
+    color: #333;
+    /* Set text color */
+}
+
+.styled-input:focus {
+    outline: none;
+    /* Remove outline when focused */
+    border-color: dodgerblue;
+    /* Change border color when focused */
+}
+
+
+
+
